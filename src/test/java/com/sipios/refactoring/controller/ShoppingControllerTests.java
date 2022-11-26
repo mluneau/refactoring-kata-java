@@ -1,5 +1,6 @@
 package com.sipios.refactoring.controller;
 
+import com.sipios.refactoring.models.*;
 import com.sipios.refactoring.UnitTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

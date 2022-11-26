@@ -1,11 +1,14 @@
 package com.sipios.refactoring.controller;
 
+import com.sipios.refactoring.models.*;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +21,7 @@ public class ShoppingController {
 
     private Logger logger = LoggerFactory.getLogger(ShoppingController.class);
 
-    @PostMapping
+    @GetMapping
     public String getPrice(@RequestBody Body b) {
         double p = 0;
         double d;
@@ -143,34 +146,5 @@ class Body {
 
     public void setType(String type) {
         this.type = type;
-    }
-}
-
-class Item {
-
-    private String type;
-    private int nb;
-
-    public Item() {}
-
-    public Item(String type, int quantity) {
-        this.type = type;
-        this.nb = quantity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getNb() {
-        return nb;
-    }
-
-    public void setNb(int nb) {
-        this.nb = nb;
     }
 }
