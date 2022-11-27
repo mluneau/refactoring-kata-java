@@ -7,7 +7,6 @@ import com.sipios.refactoring.enums.CustomerDiscountEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter @Setter
 public class Cart {
     

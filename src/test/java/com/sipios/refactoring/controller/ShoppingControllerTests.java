@@ -1,5 +1,6 @@
 package com.sipios.refactoring.controller;
 
+import com.sipios.refactoring.enums.*;
 import com.sipios.refactoring.models.*;
 import com.sipios.refactoring.UnitTest;
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +15,7 @@ class ShoppingControllerTests extends UnitTest {
     @Test
     void should_not_throw() {
         Assertions.assertDoesNotThrow(
-            () -> controller.getPrice(new Body(new Item[] {}, "STANDARD_CUSTOMER"))
-        );
+            () -> controller.getPrice(new Cart(new Item[] {}, CustomerDiscountEnum.STANDARD)
+        ));
     }
 }

@@ -2,10 +2,10 @@ package com.sipios.refactoring.enums;
 
 public enum CustomerDiscountEnum {
     
-    STANDARD("STANDARD", 30.00),
-    PREMIUM("PREMIUM", 50.00),
-    PLATINIUM("PLATINIUM", 80.00),
-    YOUTH("YOUTH", 100.00);
+    STANDARD("STANDARD_CUSTOMER", 1),
+    PREMIUM("PREMIUM_CUSTOMER", 0.9),
+    PLATINIUM("PLATINIUM_CUSTOMER", 0.5),
+    YOUTH("YOUNG_CUSTOMER", 0.85);
 
     private double discount;
     private final String name;
