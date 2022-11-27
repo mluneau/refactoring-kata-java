@@ -1,22 +1,27 @@
 package com.sipios.refactoring.models;
 
+import javax.persistence.Entity;
+
+import com.sipios.refactoring.enums.ItemEnum;
+
+@Entity
 public class Item {
 
-    private String type;
     private int nb;
+    private ItemEnum type;
 
     public Item() {}
 
-    public Item(String type, int quantity) {
+    public Item(int quantity, ItemEnum type) {
         this.type = type;
         this.nb = quantity;
     }
 
-    public String getType() {
-        return type;
+    public ItemEnum getType() {
+        return this.type;
     }
 
-    public void setType(String type) {
+    public void setType(ItemEnum type) {
         this.type = type;
     }
 
