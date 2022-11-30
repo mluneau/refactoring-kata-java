@@ -1,5 +1,7 @@
 package com.sipios.refactoring.services;
 
+import com.sipios.refactoring.enums.CustomerDiscountEnum;
+import com.sipios.refactoring.exceptions.BadRequestException;
 import com.sipios.refactoring.models.Cart;
 import com.sipios.refactoring.models.Item;
 
@@ -12,7 +14,7 @@ public class CartService {
         double discount = cart.getCustomerType().getDiscount();
 
         if (cart.getItems() == null) {
-            return "0";
+            return price;
         }
 
         for (int i=0; i<cart.getItems().length; i++) {
@@ -22,6 +24,35 @@ public class CartService {
         }
 
         return (price * discount);
+    }
+
+    public String customerPriceLimit(Cart cart, double price) {
+
+        try {
+            String errorMessage = "Price (" + price + ") is too high for " + cart.getCustomerType().getName() + " customer";
+            if (cart.getCustomerType().equals(CustomerDiscountEnum.STANDARD)) {
+                if (price > CustomerDiscountEnum.STANDARD.getMaximum()) {
+                    throw new Exception(errorMessage);
+                }
+            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.PREMIUM)) {
+                if (price > CustomerDiscountEnum.PREMIUM.getMaximum()) {
+                    throw new Exception(errorMessage);
+                }
+            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.PLATINIUM)) {
+                if (price > CustomerDiscountEnum.PLATINIUM.getMaximum()) {
+                    throw new Exception(errorMessage);
+                }
+            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.YOUTH)){
+                if (price > CustomerDiscountEnum.YOUTH.getMaximum()) {
+                    throw new Exception(errorMessage);
+                }
+            }
+
+        } catch (Exception e) {
+            throw new BadRequestException(e.getMessage());
+        }
+
+        return String.valueOf(price);
     }
 
 }

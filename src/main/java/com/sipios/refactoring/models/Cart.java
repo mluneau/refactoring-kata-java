@@ -1,7 +1,5 @@
 package com.sipios.refactoring.models;
 
-import javax.persistence.Entity;
-
 import com.sipios.refactoring.enums.CustomerDiscountEnum;
 
 import lombok.Getter;
