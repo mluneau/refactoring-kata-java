@@ -1,5 +1,9 @@
 package com.sipios.refactoring.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,14 +20,19 @@ public class ShoppingController {
     @Autowired
     CartService cartService;
 
+
     // What is logger?
 
     @PostMapping
     public String getPrice(@RequestBody Cart cart) {
+
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
+        cal.setTime(date);
+
+        //double price = cartService.getCartPrice(cart);
+        //String message = cartService.customerPriceLimit(cart, price);
         
-        double price = cartService.getCartPrice(cart);
-        String message = cartService.customerPriceLimit(cart, price);
-        
-        return message;
+        return "Await";
     }
 }

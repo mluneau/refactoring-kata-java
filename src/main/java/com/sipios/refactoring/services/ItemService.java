@@ -20,17 +20,13 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
     
-    public boolean getSeasonalDiscount() {
-        
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
-        cal.setTime(date);
+    public boolean getSeasonalDiscount(Calendar cal) {
 
         if ((
                 cal.get(Calendar.DAY_OF_MONTH) < 15 &&
                 cal.get(Calendar.DAY_OF_MONTH) > 5 &&
                 cal.get(Calendar.MONTH) == 5
-            ) &&
+            ) ||
             (
                 cal.get(Calendar.DAY_OF_MONTH) < 15 &&
                 cal.get(Calendar.DAY_OF_MONTH) > 5 &&
@@ -42,9 +38,9 @@ public class ItemService {
         return false;
     }
 
-    public double applySeasonalDiscount(Item item) {
+    public double applySeasonalDiscount(Item item, Calendar cal) {
         
-        boolean seasonalDiscount = getSeasonalDiscount();
+        boolean seasonalDiscount = getSeasonalDiscount(cal);
         if (seasonalDiscount == true) {
                 switch (item.getName()) {
                     case "DRESS":
