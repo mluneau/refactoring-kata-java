@@ -31,23 +31,4 @@ public class CartService {
         return (price * discount);
     }
 
-    public double applySeasonalDiscount(Item item, Customer customer) {
-        
-        boolean seasonalDiscount = itemService.getSeasonalDiscount(null);
-        if (seasonalDiscount == true) {
-                switch (item.getName()) {
-                    case "DRESS":
-                        item.setUnitPrice(item.getUnitPrice() * 0.8);
-                        break; 
-                    case "JACKET":
-                        item.setUnitPrice(item.getUnitPrice() * 0.9);     
-                        break;
-                    default:
-                        item.getUnitPrice();
-                    }
-        }
-        return item.getUnitPrice();
-    }
-
-
 }

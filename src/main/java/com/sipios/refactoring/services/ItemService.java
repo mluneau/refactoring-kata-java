@@ -1,9 +1,6 @@
 package com.sipios.refactoring.services;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 import org.springframework.stereotype.Service;
 
 import com.sipios.refactoring.models.Item;

@@ -1,11 +1,10 @@
 package com.sipios.refactoring.enums;
 
-
 public enum CustomerDiscountEnum {
     
     STANDARD("STANDARD_CUSTOMER", 1, 200),
     PREMIUM("PREMIUM_CUSTOMER", 0.9, 800),
-    PLATINIUM("PLATINIUM_CUSTOMER", 0.5, 200),
+    PLATINIUM("PLATINIUM_CUSTOMER", 0.5, 2000),
     YOUTH("YOUNG_CUSTOMER", 0.85, 100);
 
     private final String name;
@@ -15,6 +14,7 @@ public enum CustomerDiscountEnum {
     CustomerDiscountEnum(String name, double discount, int maximum) {
         this.name = name;
         this.discount = discount;
+        this.maximum = maximum;
     }
 
     public String getName() {
