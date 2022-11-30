@@ -2,12 +2,10 @@ package com.sipios.refactoring.services;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 import org.springframework.stereotype.Service;
 
-import com.sipios.refactoring.exceptions.BadRequestException;
 import com.sipios.refactoring.models.Item;
 import com.sipios.refactoring.repositories.ItemRepository;
 
@@ -21,38 +19,7 @@ public class ItemService {
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
-
-    public boolean repositoryContainsItem(Item item) {
-
-        List<Item> allItems = itemRepository.findAll();
-        for (Item i : allItems) {
-            if (i.getNb() == item.getNb() && i.getType() == item.getType()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
-    }
     
-    public void addItem(Item item) {
-        boolean itemExists = repositoryContainsItem(item);
-            if (itemExists) {
-                throw new BadRequestException("The item " + item.getType().getName() + " already exists");
-            }
-        itemRepository.save(item);    
-    }
-
-    public void deleteItem(Long id) {
-        if (itemRepository.findById(id) == null) {
-            throw new BadRequestException("The item you selected does not exists");
-        }
-        itemRepository.deleteById(id);
-    }
-
     public boolean getSeasonalDiscount() {
         
         Date date = new Date();
@@ -75,23 +42,22 @@ public class ItemService {
         return false;
     }
 
-
     public double applySeasonalDiscount(Item item) {
         
         boolean seasonalDiscount = getSeasonalDiscount();
         if (seasonalDiscount == true) {
-                switch (item.getType().getName()) {
+                switch (item.getName()) {
                     case "DRESS":
-                        item.getType().setPrice(item.getType().getPrice() * 0.8);
+                        item.setUnitPrice(item.getUnitPrice() * 0.8);
                         break; 
                     case "JACKET":
-                        item.getType().setPrice(item.getType().getPrice() * 0.9);     
+                        item.setUnitPrice(item.getUnitPrice() * 0.9);     
                         break;
                     default:
-                        item.getType().getPrice();
+                        item.getUnitPrice();
                     }
         }
-        return item.getType().getPrice();
+        return item.getUnitPrice();
     }
 
     

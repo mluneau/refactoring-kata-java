@@ -1,20 +1,26 @@
 package com.sipios.refactoring.services;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 import org.springframework.stereotype.Service;
 
 import com.sipios.refactoring.enums.CustomerDiscountEnum;
 import com.sipios.refactoring.exceptions.BadRequestException;
 import com.sipios.refactoring.models.Cart;
+import com.sipios.refactoring.models.Customer;
 import com.sipios.refactoring.models.Item;
 
 @Service
 public class CartService {
     
     private ItemService itemService;
+    private CustomerService customerService;
 
-    public double getCartPrice(Cart cart) {
+    public double getCartPrice(Cart cart, Customer customer) {
         double price = 0;
-        double discount = cart.getCustomerType().getDiscount();
+        double discount = cart.getCustomer().getType().getDiscount();
 
         if (cart.getItems() == null) {
             return price;
@@ -29,33 +35,23 @@ public class CartService {
         return (price * discount);
     }
 
-    public String customerPriceLimit(Cart cart, double price) {
-
-        try {
-            String errorMessage = "Price (" + price + ") is too high for " + cart.getCustomerType().getName() + " customer";
-            if (cart.getCustomerType().equals(CustomerDiscountEnum.STANDARD)) {
-                if (price > CustomerDiscountEnum.STANDARD.getMaximum()) {
-                    throw new Exception(errorMessage);
-                }
-            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.PREMIUM)) {
-                if (price > CustomerDiscountEnum.PREMIUM.getMaximum()) {
-                    throw new Exception(errorMessage);
-                }
-            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.PLATINIUM)) {
-                if (price > CustomerDiscountEnum.PLATINIUM.getMaximum()) {
-                    throw new Exception(errorMessage);
-                }
-            } else if (cart.getCustomerType().equals(CustomerDiscountEnum.YOUTH)){
-                if (price > CustomerDiscountEnum.YOUTH.getMaximum()) {
-                    throw new Exception(errorMessage);
-                }
-            }
-
-        } catch (Exception e) {
-            throw new BadRequestException(e.getMessage());
+    public double applySeasonalDiscount(Item item, Customer customer) {
+        
+        boolean seasonalDiscount = itemService.getSeasonalDiscount();
+        if (seasonalDiscount == true) {
+                switch (item.getType().getName()) {
+                    case "DRESS":
+                        item.getType().setPrice(item.getType().getPrice() * 0.8);
+                        break; 
+                    case "JACKET":
+                        item.getType().setPrice(item.getType().getPrice() * 0.9);     
+                        break;
+                    default:
+                        item.getType().getPrice();
+                    }
         }
-
-        return String.valueOf(price);
+        return item.getType().getPrice();
     }
+
 
 }

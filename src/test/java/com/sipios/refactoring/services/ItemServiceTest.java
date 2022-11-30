@@ -28,34 +28,6 @@ public class ItemServiceTest {
     }
 
     @Test
-    void getAllItemsTest() {
-        //when
-        underTest.getAllItems();
-        
-        //then
-        verify(itemRepository).findAll();
-    }
-
-    @Test
-    @Disabled
-    void addItemTest() {
-        //given
-        Item itemTest = new Item(12, ItemEnum.TSHIRT);
-        
-        //when
-        underTest.addItem(itemTest);
-        
-        //then
-        ArgumentCaptor<Item> iArgumentCaptor = ArgumentCaptor.forClass(Item.class);
-        verify(itemRepository).save(iArgumentCaptor.capture());
-    }
-
-    @Test
-    void deleteItemTest() {
-
-    }
-
-    @Test
     @Disabled
     void getSeasonalDiscountTest() {
         

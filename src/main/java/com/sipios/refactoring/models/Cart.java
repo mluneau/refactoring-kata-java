@@ -1,21 +1,25 @@
 package com.sipios.refactoring.models;
 
-import com.sipios.refactoring.enums.CustomerDiscountEnum;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Getter
+@Setter
+@ToString
 public class Cart {
     
-    private Item[] items;
-    private CustomerDiscountEnum customerType;
+    @Id
+    private Long cartId;
+    private Customer customer;
+    private Object items;
 
-    public Cart(Item[] items, CustomerDiscountEnum customerType) {
-        this.items = items;
-        this.customerType = customerType;
-    }
-
-    public Cart() {}
-    
 }

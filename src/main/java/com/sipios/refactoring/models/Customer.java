@@ -1,7 +1,8 @@
 package com.sipios.refactoring.models;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import com.sipios.refactoring.enums.CustomerDiscountEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,15 +11,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@NoArgsConstructor 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
 @ToString
-public class Item {
-
-    @Id
-    private Long itemId;
-    private String name;
-    private double unitPrice;
+public class Customer {
+    
+    private Long customerId;
+    private String username;
+    private CustomerDiscountEnum type;
 
 }
