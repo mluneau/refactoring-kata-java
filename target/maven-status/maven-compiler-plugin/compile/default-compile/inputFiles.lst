@@ -1,0 +1,7 @@
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/RefactoringApplication.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/models/Item.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/models/Cart.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/controller/ShoppingController.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/enums/CustomerDiscountEnum.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/enums/ItemEnum.java
+/Users/maxenceluneau/Dev/tech_tests/refactoring-kata-java/src/main/java/com/sipios/refactoring/services/ItemService.java
