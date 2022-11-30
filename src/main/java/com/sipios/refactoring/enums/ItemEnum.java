@@ -10,6 +10,7 @@ public enum ItemEnum {
     private double price;
     private final String name;
 
+    
     ItemEnum(String name, double price) {
         this.name = name;
         this.price = price;

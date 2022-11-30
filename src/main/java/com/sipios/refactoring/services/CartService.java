@@ -1,10 +1,13 @@
 package com.sipios.refactoring.services;
 
+import org.springframework.stereotype.Service;
+
 import com.sipios.refactoring.enums.CustomerDiscountEnum;
 import com.sipios.refactoring.exceptions.BadRequestException;
 import com.sipios.refactoring.models.Cart;
 import com.sipios.refactoring.models.Item;
 
+@Service
 public class CartService {
     
     private ItemService itemService;
@@ -20,7 +23,7 @@ public class CartService {
         for (int i=0; i<cart.getItems().length; i++) {
             
             Item item = cart.getItems()[i];
-            price += (itemService.seasonalDiscount(item) * item.getNb());
+            price += (itemService.applySeasonalDiscount(item) * item.getNb());
         }
 
         return (price * discount);
