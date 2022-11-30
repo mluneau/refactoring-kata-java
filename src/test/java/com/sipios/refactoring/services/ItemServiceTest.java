@@ -1,21 +1,19 @@
 package com.sipios.refactoring.services;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.assertj.core.util.DateUtil;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.sipios.refactoring.models.Item;
 import com.sipios.refactoring.repositories.ItemRepository;
 
 
@@ -65,8 +63,35 @@ public class ItemServiceTest {
 
 
     @Test
-    @Disabled
-    void applySeasonalDiscountTest() {
+    void shouldApplySeasonalDiscountTest() {
+        // given
+        Item itemTest1 = new Item(14L, "TROUSERS", 35.00);
+        Item itemTest2 = new Item(15L, "DRESS", 45.00);
+        boolean seasonalDiscountTrue = true;
+
+        // when 
+        double expectedItemTest1Price = underTest.applySeasonalDiscount(itemTest1, seasonalDiscountTrue);
+        double expectedItemTest2Price = underTest.applySeasonalDiscount(itemTest2, seasonalDiscountTrue);
+
+        // then
+        assertEquals(expectedItemTest1Price, 35.00);
+        assertEquals(expectedItemTest2Price, 36.00);
+    }
+
+    @Test
+    void shouldNotApplySeasonalDiscountTest() {
+        // given
+        Item itemTest1 = new Item(14L, "TROUSERS", 35.00);
+        Item itemTest2 = new Item(15L, "DRESS", 45.00);
+        boolean seasonalDiscountTrue = false;
+
+        // when 
+        double expectedItemTest1Price = underTest.applySeasonalDiscount(itemTest1, seasonalDiscountTrue);
+        double expectedItemTest2Price = underTest.applySeasonalDiscount(itemTest2, seasonalDiscountTrue);
+
+        // then
+        assertEquals(expectedItemTest1Price, 35.00);
+        assertEquals(expectedItemTest2Price, 45.00);
 
     }
 }

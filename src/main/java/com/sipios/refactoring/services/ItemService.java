@@ -38,9 +38,8 @@ public class ItemService {
         return false;
     }
 
-    public double applySeasonalDiscount(Item item, Calendar cal) {
-        
-        boolean seasonalDiscount = getSeasonalDiscount(cal);
+    public double applySeasonalDiscount(Item item, boolean seasonalDiscount) {
+       
         if (seasonalDiscount == true) {
                 switch (item.getName()) {
                     case "DRESS":
