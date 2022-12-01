@@ -10,13 +10,9 @@ import com.sipios.refactoring.repositories.CartRepository;
 @Service
 public class CartService {
 
-    private CartRepository cartRepository;
-
-
     public CartService() {} 
 
     public CartService(CartRepository cartRepository) {
-        this.cartRepository = cartRepository;
     }
 
     public int checkSeason(Calendar cal) {

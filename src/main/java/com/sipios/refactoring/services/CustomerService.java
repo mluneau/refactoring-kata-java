@@ -10,12 +10,9 @@ import com.sipios.refactoring.repositories.CustomerRepository;
 @Service
 public class CustomerService {
 
-    private CustomerRepository customerRepository;
-
     public CustomerService() {} 
 
     public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
     }
     
     public String customerPriceLimit(Customer customer, double price) {

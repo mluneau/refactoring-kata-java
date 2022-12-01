@@ -9,12 +9,9 @@ import com.sipios.refactoring.repositories.ItemRepository;
 @Service
 public class ItemService {
 
-    private ItemRepository itemRepository;
-
     public ItemService() {}
 
     public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
     }
     
     static public boolean getSeasonalDiscount(Calendar cal) {
