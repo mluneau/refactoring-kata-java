@@ -20,7 +20,6 @@ public class ShoppingController {
     @Autowired
     CartService cartService;
 
-
     // What is logger?
 
     @PostMapping
@@ -30,9 +29,8 @@ public class ShoppingController {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
         cal.setTime(date);
 
-        //double price = cartService.getCartPrice(cart);
-        //String message = cartService.customerPriceLimit(cart, price);
+        double price = cartService.getCartPrice(cart, cart.getCustomer(), cal);
         
-        return "Await";
+        return String.valueOf(price);
     }
 }
