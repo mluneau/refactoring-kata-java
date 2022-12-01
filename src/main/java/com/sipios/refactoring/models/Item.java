@@ -20,5 +20,6 @@ public class Item {
     private Long itemId;
     private String name;
     private double unitPrice;
+    private int quantity;
 
 }

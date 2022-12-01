@@ -65,8 +65,8 @@ public class ItemServiceTest {
     @Test
     void shouldApplySeasonalDiscountTest() {
         // given
-        Item itemTest1 = new Item(14L, "TROUSERS", 35.00);
-        Item itemTest2 = new Item(15L, "DRESS", 45.00);
+        Item itemTest1 = new Item(14L, "TROUSERS", 35.00, 1);
+        Item itemTest2 = new Item(15L, "DRESS", 45.00, 1);
         boolean seasonalDiscountTrue = true;
 
         // when 
@@ -81,8 +81,8 @@ public class ItemServiceTest {
     @Test
     void shouldNotApplySeasonalDiscountTest() {
         // given
-        Item itemTest1 = new Item(14L, "TROUSERS", 35.00);
-        Item itemTest2 = new Item(15L, "DRESS", 45.00);
+        Item itemTest1 = new Item(14L, "TROUSERS", 35.00, 1);
+        Item itemTest2 = new Item(15L, "DRESS", 45.00, 1);
         boolean seasonalDiscountTrue = false;
 
         // when 

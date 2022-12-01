@@ -9,17 +9,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 public class Cart {
     
     @Id
     private Long cartId;
     private Customer customer;
-    private Object items;
+    private Item[] items;
 
 }

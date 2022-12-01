@@ -17,7 +17,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
     
-    public boolean getSeasonalDiscount(Calendar cal) {
+    static public boolean getSeasonalDiscount(Calendar cal) {
 
         if ((
                 cal.get(Calendar.DAY_OF_MONTH) < 15 &&
@@ -35,7 +35,7 @@ public class ItemService {
         return false;
     }
 
-    public double applySeasonalDiscount(Item item, boolean seasonalDiscount) {
+    public static double applySeasonalDiscount(Item item, boolean seasonalDiscount) {
        
         if (seasonalDiscount == true) {
                 switch (item.getName()) {

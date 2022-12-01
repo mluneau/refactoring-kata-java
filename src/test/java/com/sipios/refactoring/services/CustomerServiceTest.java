@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sipios.refactoring.enums.CustomerDiscountEnum;
-import com.sipios.refactoring.exceptions.BadRequestException;
 import com.sipios.refactoring.models.Customer;
 import com.sipios.refactoring.repositories.CustomerRepository;
 
